@@ -1,12 +1,5 @@
 #include "../incs/philo.h"
 
-int	error_message(void)
-{
-	printf("\x1B[31mERROR!\n\x1B[0m");
-	exit(0);
-	return (0);
-}
-
 int	isnum(char *str)
 {
 	int	i;

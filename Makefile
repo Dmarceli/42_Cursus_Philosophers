@@ -21,6 +21,9 @@ BIN				:=	./$(NAME)
 SRCS			:= $(PATH_SRC)/main.c \
 					$(PATH_SRC)/argparser.c\
 					$(PATH_SRC)/init.c\
+					$(PATH_SRC)/prints.c\
+					$(PATH_SRC)/actions.c\
+					$(PATH_SRC)/time.c\
 
 OBJ				:= $(subst .c,.o,$(subst $(PATH_SRC), $(PATH_OBJS), $(SRCS)))
 

@@ -14,26 +14,34 @@ typedef struct t_arguments
 	int					eat_t;
 	int					sleep_t;
 	int					times_eat;
-	pthread_mutex_t		forks[250];
+	int					isdead;
+	long				start_time;
+	pthread_mutex_t		forks[999];
+	t_philo 			*philo[999];
+
 
 }		t_args;
 
-typedef struct t_philostates
+typedef struct s_philo
 {
-	int					id;
-	int					x_ate;
-	int					left_fork_id;
-	int					right_fork_id;
-	long long			t_last_meal;
-	struct s_rules		*args;
-	pthread_t			thread_id;
+	int		id;
+	int		meals;
+	double	last_meal;
+	t_args	*args;
 
-}		t_philo;
+}				t_philo;
+
+typedef struct s_all
+{
+	t_philo *philo[999];
+}	t_all;
 
 int main(int argc, char **argv);
 int argparser(int ac, char **av);
 int	isnum(char *str);
 int	error_message(void);
 int	init_philo(int ac, char **av);
+void start_time(t_args *philo);
+long current_time(t_args *philo);
 
 #endif

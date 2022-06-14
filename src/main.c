@@ -2,8 +2,9 @@
 
 int main(int argc, char **argv)
 {
-
+	t_args philo;
 	if(argparser(argc,argv))
-		printf("estupida\n");
+		start_time(&philo);
+	
 	return (0);
 }
