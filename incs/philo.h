@@ -15,7 +15,7 @@ typedef struct t_arguments
 	int					sleep_t;
 	int					times_eat;
 	int					isdead;
-	double				start_time;
+	long				start_time;
 	pthread_t			philo[999];
 	pthread_mutex_t		forks[999];
 }		t_args;
@@ -27,7 +27,6 @@ typedef struct s_philo
 	double	last_meal;
 	int		fork;
 	int		fork2;
-	
 	t_args	*args;
 }				t_philo;
 
@@ -46,8 +45,8 @@ void	print_timestamp(int control, long time, int philo_id);
 int		init_philo(int ac, char **av);
 int		init_mutex(t_args *args);
 void	 *philoact(void *data);
-void 	start_time(t_philo *philo);
-long	current_time(t_philo *philo);
+long 	start_timer(void);
+long 	current_time(t_args *data);
 void 	forkpicker(t_philo *p);
 
 

@@ -14,11 +14,11 @@ void	print_timestamp(int control, long time, int philo_id)
 		printf("%ld %d has taken a fork\n", time, philo_id);
 	}
 	else if (control == 1)
-		printf("%ld %d is eating\n", time, philo_id);
+		printf("%ld philo %d is eating\n", time, philo_id);
 	else if (control == 2)
-		printf("%ld %d is sleeping\n", time, philo_id);
+		printf("%ld philo %d is sleeping\n", time, philo_id);
 	else if (control == 3)
-		printf("%ld %d is thinking\n", time, philo_id);
+		printf("%ld philo %d is thinking\n", time, philo_id);
 	else if (control == 4)
-		printf("%ld %d died\n", time, philo_id);
+		printf("%ld philo %d died\n", time, philo_id);
 }

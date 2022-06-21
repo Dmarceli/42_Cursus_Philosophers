@@ -1,19 +1,21 @@
 #include "../incs/philo.h"
 
+void	pickup_fork(t_philo *philo)
+{
+	forkpicker(philo);
+	pthread_mutex_lock(&philo->args->forks[philo->fork]);
+	print_timestamp(0, current_time(philo->args), philo->id);
+	pthread_mutex_lock(&philo->args->forks[philo->fork2]);
+}
+
 void *philoact(void *data)
 {
 	t_philo	*philo;
-	t_args	args;
-
 
 	philo = (t_philo *)data;
-	forkpicker(philo);
-	while(!args.isdead)
+	while(!philo->args->isdead)
 	{
-		pthread_mutex_lock(&philo->args->forks[philo->fork]);
-		current_time(philo);
-		//print_timestamp(0, current_time(philo), philo->id);
-		pthread_mutex_lock(&philo->args->forks[philo->fork2]);
+		pickup_fork(philo);
 	}
 	return (NULL);
 }
@@ -34,7 +36,7 @@ int	init_mutex(t_args *args)
 		all.philo[i]->id = i;
 		all.philo[i]->meals = 0;
 		pthread_create(&args->philo[i] , NULL, philoact, (void *)all.philo[i]);
-		usleep(150);
+		usleep(100);
 	}
 	return (0);
 }
@@ -43,6 +45,7 @@ int	init_philo(int ac, char **av)
 	t_args *args;
 
 	args = malloc(sizeof(t_args));
+	args->start_time = start_timer();
 	args->philo_n = ft_atoi(av[1]);
 	args->die_t = ft_atoi(av[2]);
 	args->eat_t = ft_atoi(av[3]);

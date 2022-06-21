@@ -1,21 +1,30 @@
 #include "../incs/philo.h"
 
-void start_time(t_philo *philo)
+long start_timer(void)
 {
 	struct timeval time;
 
 	gettimeofday(&time, NULL);
-	philo->args->start_time = time.tv_sec * 1000 - time.tv_usec / 1000;
+	return(time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-long current_time(t_philo *philo)
+long current_time(t_args *data)
 {
-	long	current;
-	struct timeval time;
-
-	gettimeofday(&time, NULL);
-	current = (time.tv_sec * 1000 - time.tv_usec / 1000) - philo->args->start_time;
-	printf("st = %f\n", philo->args->start_time);
-	printf("ct = %ld\n", current);
-	return(current);	
+    long     timeMill;
+    struct  timeval ct;
+    
+    gettimeofday(&ct, NULL);
+    timeMill = (ct.tv_sec * 1000 + ct.tv_usec / 1000) - data->start_time;
+    return (1000 * timeMill);
 }
+
+
+// long current_time(t_philo *philo)
+// {
+// 	long	current;
+// 	struct timeval time;
+
+// 	gettimeofday(&time, NULL);
+// 	current = (time.tv_sec * 1000 + time.tv_usec / 1000) - philo->args->start_time;
+// 	return(current * 1000);	
+// }
