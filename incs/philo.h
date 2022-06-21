@@ -24,7 +24,7 @@ typedef struct s_philo
 {
 	int		id;
 	int		meals;
-	double	last_meal;
+	long	last_meal;
 	int		fork;
 	int		fork2;
 	t_args	*args;
@@ -48,6 +48,10 @@ void	 *philoact(void *data);
 long 	start_timer(void);
 long 	current_time(t_args *data);
 void 	forkpicker(t_philo *p);
+void	pickup_fork(t_philo *philo);
+void	eat(t_philo *philo);
+void	philo_sleep(t_philo *p);
+
 
 
 #endif

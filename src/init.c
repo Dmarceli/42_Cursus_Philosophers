@@ -1,12 +1,5 @@
 #include "../incs/philo.h"
 
-void	pickup_fork(t_philo *philo)
-{
-	forkpicker(philo);
-	pthread_mutex_lock(&philo->args->forks[philo->fork]);
-	print_timestamp(0, current_time(philo->args), philo->id);
-	pthread_mutex_lock(&philo->args->forks[philo->fork2]);
-}
 
 void *philoact(void *data)
 {
@@ -16,6 +9,8 @@ void *philoact(void *data)
 	while(!philo->args->isdead)
 	{
 		pickup_fork(philo);
+		eat(philo);
+		philo_sleep(philo);
 	}
 	return (NULL);
 }
