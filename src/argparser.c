@@ -20,8 +20,6 @@ int argparser(int ac, char **av)
 		while (++i < ac)
 			if (!av[i] || !isnum(av[i]))
 				return(error_message());
-		if(!init_philo(ac,av))
-			return (error_message());
 		return(1);
 	}
 	else

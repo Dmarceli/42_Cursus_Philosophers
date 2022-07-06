@@ -1,38 +1,38 @@
 #include "../incs/philo.h"
 
-
-void *philoact(void *data)
+void	join_threads(t_args *args)
 {
-	t_philo	*philo;
+	int		i;
 
-	philo = (t_philo *)data;
-	while(!philo->args->isdead)
-	{
-		pickup_fork(philo);
-		eat(philo);
-		philo_sleep(philo);
-	}
-	return (NULL);
+	i = 0;
+	while (i < args->philo_n)
+		pthread_join(args->philo[i++], NULL);
 }
+
 
 int	init_mutex(t_args *args)
 {
 	int 	i;
 	t_all	all;
 
+	printf("\x1b[36mTIME\tPHILO #\tACTION\n\x1B[0m");
 	i = -1;
 	while (++i < args->philo_n)
 		pthread_mutex_init(&(args->forks[i]), 0);
 	i = -1;
+	args->start_time = get_curr_time();
 	while (++i < args->philo_n)
 	{
 		all.philo[i] = (t_philo *)malloc(sizeof(t_philo)) ;
 		all.philo[i]->args = args;
-		all.philo[i]->id = i;
+		all.philo[i]->id = i + 1;
 		all.philo[i]->meals = 0;
+		all.philo[i]->args->isdead = 0;
+		all.philo[i]->last_meal = get_curr_time();
 		pthread_create(&args->philo[i] , NULL, philoact, (void *)all.philo[i]);
 		usleep(100);
 	}
+	join_threads(args);
 	return (0);
 }
 int	init_philo(int ac, char **av)
@@ -40,12 +40,12 @@ int	init_philo(int ac, char **av)
 	t_args *args;
 
 	args = malloc(sizeof(t_args));
-	args->start_time = start_timer();
+	args->print = init_print_mutex();
 	args->philo_n = ft_atoi(av[1]);
 	args->die_t = ft_atoi(av[2]);
 	args->eat_t = ft_atoi(av[3]);
 	args->sleep_t = ft_atoi(av[4]);
-	args->times_eat = 0;
+	args->times_eat = -1;
 	args->isdead = 0;
 	if (args->philo_n < 1 || args->die_t < 0 || args->eat_t < 0
 	|| args->sleep_t < 0 || args->philo_n > 250)

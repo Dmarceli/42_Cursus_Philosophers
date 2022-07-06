@@ -15,7 +15,8 @@ typedef struct t_arguments
 	int					sleep_t;
 	int					times_eat;
 	int					isdead;
-	long				start_time;
+	long long			start_time;
+	pthread_mutex_t		*print;
 	pthread_t			philo[999];
 	pthread_mutex_t		forks[999];
 }		t_args;
@@ -41,17 +42,16 @@ int 	main(int argc, char **argv);
 int 	argparser(int ac, char **av);
 int		isnum(char *str);
 int		error_message(void);
-void	print_timestamp(int control, long time, int philo_id);
+void	print_states(int control, long time, t_philo *philo);
 int		init_philo(int ac, char **av);
 int		init_mutex(t_args *args);
+pthread_mutex_t	*init_print_mutex(void);
 void	 *philoact(void *data);
-long 	start_timer(void);
-long 	current_time(t_args *data);
 void 	forkpicker(t_philo *p);
 void	pickup_fork(t_philo *philo);
 void	eat(t_philo *philo);
 void	philo_sleep(t_philo *p);
-
-
+long long	get_curr_time(void);
+int	isanyonedead(t_philo *philo);
 
 #endif
