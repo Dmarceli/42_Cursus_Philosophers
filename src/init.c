@@ -4,11 +4,10 @@ void	join_threads(t_args *args)
 {
 	int		i;
 
-	i = 0;
+	i = 1;
 	while (i < args->philo_n)
 		pthread_join(args->philo[i++], NULL);
 }
-
 
 int	init_mutex(t_args *args)
 {

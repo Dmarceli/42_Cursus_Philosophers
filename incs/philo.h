@@ -1,6 +1,9 @@
 #ifndef PHILO_H
 # define PHILO_H
 
+# define USED 1
+# define FREE 0
+
 # include <stdio.h>
 # include <unistd.h>
 # include <pthread.h>

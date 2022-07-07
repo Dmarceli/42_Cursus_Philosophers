@@ -2,22 +2,18 @@
 
 int	isanyonedead(t_philo *philo)
 {
-	int	i;
-
-	i = 1;
-	while (i < philo->args->philo_n
-		&& philo->args->isdead == 0)
+	if (philo->args->isdead == 0)
 	{
-		if (philo->args->start_time - philo->last_meal
+		if ((philo->last_meal - philo->args->start_time)
 			> philo->args->die_t)
 		{
 			philo->args->isdead = 1;
 			print_states(4, get_curr_time() - philo->args->start_time, philo);
-			return (0);
+			exit(0);
+			return (1);
 		}
-		i++;
 	}
-	return (1);
+	return (0);
 }
 
 pthread_mutex_t	*init_print_mutex(void)

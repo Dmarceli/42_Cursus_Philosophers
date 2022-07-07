@@ -9,7 +9,7 @@ LIBFT		=	./libft/libft.a
 LIBFT_DIR	=	./libft
 
 CC		:=	gcc
-CFLAGS	:= -Wall -Wextra -Werror -pthread -g
+CFLAGS	:= -Wall -Wextra -Werror -pthread
 
 PATH_SRC		:=	./src
 PATH_INCLUDES	:=	./incs
