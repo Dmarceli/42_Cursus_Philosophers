@@ -32,6 +32,7 @@ typedef struct s_philo
 	long	last_sleep;
 	int		fork;
 	int		fork2;
+	int 	forkusage;
 	t_args	*args;
 }				t_philo;
 

@@ -27,6 +27,7 @@ int	init_mutex(t_args *args)
 		all.philo[i]->args->isdead = 0;
 		all.philo[i]->last_meal = get_curr_time();
 		all.philo[i]->meals = args->times_eat;
+		all.philo[i]->forkusage = 0;
 		pthread_create(&args->philo[i] , NULL, philoact, (void *)all.philo[i]);
 		usleep(100);
 	}
