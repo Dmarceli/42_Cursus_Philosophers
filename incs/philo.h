@@ -8,7 +8,7 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
-# include "../libft/libft.h"
+# include <stdlib.h>
 
 typedef struct t_arguments
 {
@@ -29,6 +29,7 @@ typedef struct s_philo
 	int		id;
 	int		meals;
 	long	last_meal;
+	long	last_sleep;
 	int		fork;
 	int		fork2;
 	t_args	*args;
@@ -42,19 +43,20 @@ typedef struct s_all
 
 
 int 	main(int argc, char **argv);
+int		ft_atoi(const char *str);
 int 	argparser(int ac, char **av);
 int		isnum(char *str);
 int		error_message(void);
 void	print_states(int control, long time, t_philo *philo);
 int		init_philo(int ac, char **av);
-int		init_mutex(t_args *args);
+int					init_mutex(t_args *args);
 pthread_mutex_t	*init_print_mutex(void);
-void	 *philoact(void *data);
-void 	forkpicker(t_philo *p);
-void	pickup_fork(t_philo *philo);
-void	eat(t_philo *philo);
-void	philo_sleep(t_philo *p);
-long long	get_curr_time(void);
-int	isanyonedead(t_philo *philo);
+void			 *philoact(void *data);
+void 			forkpicker(t_philo *p);
+void			pickup_fork(t_philo *philo);
+void			eat(t_philo *philo);
+void			philo_sleep(t_philo *p);
+long long		get_curr_time(void);
+int				isanyonedead(t_philo *philo);
 
 #endif

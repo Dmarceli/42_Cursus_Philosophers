@@ -4,11 +4,12 @@ int	isanyonedead(t_philo *philo)
 {
 	if (philo->args->isdead == 0)
 	{
-		if ((philo->last_meal - philo->args->start_time)
-			> philo->args->die_t)
+		if ((get_curr_time() - philo->last_meal) > philo->args->die_t)
 		{
 			philo->args->isdead = 1;
 			print_states(4, get_curr_time() - philo->args->start_time, philo);
+			pthread_mutex_lock(philo->args->print);
+			//pthread_mutex_lock(philo->args->print);
 			exit(0);
 			return (1);
 		}

@@ -1,47 +1,67 @@
 #include "../incs/philo.h"
 
-void forkpicker(t_philo *p)
+void	forkpicker(t_philo *p)
 {
-	isanyonedead(p);
-	p->fork = p->id;
-	p->fork2 = (p->id + 1) % p->args->philo_n;
-}
-void	pickup_fork(t_philo *philo)
-{
-	if (!philo->args->isdead)
+	if (!isanyonedead(p))
 	{
-		isanyonedead(philo);
-		forkpicker(philo);
-		pthread_mutex_lock(&philo->args->forks[philo->fork]);
-		pthread_mutex_lock(&philo->args->forks[philo->fork2]);
-		print_states(0, get_curr_time() - philo->args->start_time, philo);
+		p->fork = p->id;
+		p->fork2 = (p->id + 1) % p->args->philo_n;
 	}
 }
 
-void eat(t_philo *philo)
+void	pickup_fork(t_philo *philo)
 {
-	philo->last_meal = get_curr_time();
-	isanyonedead(philo);
-	if(philo->args->isdead == 1)
-		return ;
-	print_states(1, get_curr_time() - philo->args->start_time, philo);
-	usleep(philo->args->eat_t * 1000);
-	philo->args->times_eat--;
-	pthread_mutex_unlock(&philo->args->forks[philo->fork]);
-	pthread_mutex_unlock(&philo->args->forks[philo->fork2]);
+	if (!philo->args->isdead && philo->meals != 0)
+	{
+		forkpicker(philo);
+		if (!isanyonedead(philo))
+		{
+			pthread_mutex_lock(&philo->args->forks[philo->fork]);
+			pthread_mutex_lock(&philo->args->forks[philo->fork2]);
+		}
+		print_states(0, get_curr_time() - philo->args->start_time, philo);
+		// pthread_mutex_unlock(&philo->args->forks[philo->fork]);
+		// pthread_mutex_unlock(&philo->args->forks[philo->fork2]);
+	}
+}
+
+void	eat(t_philo *philo)
+{
+	if (philo->meals != 0 && !philo->args->isdead)
+	{
+		print_states(1, get_curr_time() - philo->args->start_time, philo);	
+		philo->last_meal = get_curr_time();
+		while (philo->args->eat_t > (get_curr_time() - philo->last_meal))
+		{
+			isanyonedead(philo);
+			if(philo->args->isdead)
+				break ;
+		}
+		philo->meals--;
+		if(!isanyonedead(philo))
+		{
+			pthread_mutex_unlock(&philo->args->forks[philo->fork]);
+			philo->fork = 0;
+			pthread_mutex_unlock(&philo->args->forks[philo->fork2]);
+			philo->fork2 = 0;
+		}
+	}
 }
 
 void	philo_sleep(t_philo *p)
 {
-	long long	time;
-	
-	isanyonedead(p);
-	if(p->args->isdead == 1)
+	if (!p->args->isdead && p->meals != 0)
+	{
+		print_states(2, (get_curr_time() - p->args->start_time), p);
+		p->last_sleep = get_curr_time();
+		while (p->args->sleep_t > (get_curr_time() - p->last_sleep))
+		{
+			isanyonedead(p);
+			if(p->args->isdead)
+				break ;
+		}
 		return ;
-	time = get_curr_time() - p->args->start_time;
-	print_states(2, time, p);
-	usleep(p->args->sleep_t * 1000);
-	return ;
+	}
 }
 
 
@@ -50,14 +70,15 @@ void *philoact(void *data)
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
-	while(!philo->args->isdead)
+	philo->args->start_time = get_curr_time();
+	while(!philo->args->isdead && philo->meals != 0)
 	{
 		if (!isanyonedead(philo))
 		{
 			pickup_fork(philo);
 			eat(philo);
 			philo_sleep(philo);
-			if(!isanyonedead(philo))
+			if (!isanyonedead(philo))
 				print_states(3, get_curr_time() - philo->args->start_time, philo);
 		}
 	}

@@ -5,15 +5,12 @@ RESET		=	\e[0m
 
 NAME	:= philosophers
 
-LIBFT		=	./libft/libft.a
-LIBFT_DIR	=	./libft
-
 CC		:=	gcc
-CFLAGS	:= -Wall -Wextra -Werror -pthread
+CFLAGS	:= -Wall -Wextra -Werror -pthread -fsanitize=address
 
 PATH_SRC		:=	./src
 PATH_INCLUDES	:=	./incs
-INCS			:=	-I$(PATH_INCLUDES) -I$(LIBFT_DIR)
+INCS			:=	-I$(PATH_INCLUDES) 
 PATH_BUILD		:= ./build
 PATH_OBJS		:= $(PATH_BUILD)/objs
 
@@ -29,12 +26,10 @@ OBJ				:= $(subst .c,.o,$(subst $(PATH_SRC), $(PATH_OBJS), $(SRCS)))
 
 all:$(BIN)
 
-$(BIN):$(LIBFT) $(OBJ)
+$(BIN): $(OBJ)
 		@$(CC) $(CFLAGS) $(LIBFT) $(INCS) -o $(@) $^ -I$(PATH_INCLUDES)
 		@printf "\033[44m[Philo built!]\033[0m\n"
 
-$(LIBFT):
-		@$(MAKE) -C ./libft --silent
 
 
 $(PATH_OBJS)/%.o: $(PATH_SRC)/%.c | $(PATH_BUILD)
@@ -51,7 +46,6 @@ clean:
 		@rm -rf $(PATH_OBJS)
 
 fclean: clean
-		@ $(MAKE) fclean -C $(LIBFT_DIR) --silent
 		@rm -rf $(PATH_BUILD) $(NAME)
 		@rm -rf $(BIN)
 		@printf "\033[38;5;1m[Cleaning Bin!]\033[0m\n"
