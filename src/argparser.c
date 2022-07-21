@@ -43,6 +43,7 @@ int	isnum(char *str)
 int argparser(int ac, char **av)
 {
 	int i;
+
 	i = 0;
 	if (ac == 5 || ac == 6)
 	{

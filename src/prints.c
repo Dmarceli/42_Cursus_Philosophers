@@ -9,7 +9,6 @@ int	isanyonedead(t_philo *philo)
 			philo->args->isdead = 1;
 			print_states(4, get_curr_time() - philo->args->start_time, philo);
 			pthread_mutex_lock(philo->args->print);
-			//pthread_mutex_lock(philo->args->print);
 			exit(0);
 			return (1);
 		}

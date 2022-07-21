@@ -2,26 +2,21 @@
 
 void	forkpicker(t_philo *p)
 {
-	if (!isanyonedead(p))
-	{
-		p->fork = p->id;
-		p->fork2 = (p->id + 1) % p->args->philo_n;
-	}
+		if (!p->args->isdead)
+		{
+			p->fork = p->id;
+			p->fork2 = (p->id + 1) % p->args->philo_n;
+		}
 }
 
 void	pickup_fork(t_philo *philo)
 {
-	if (!philo->args->isdead && philo->meals != 0)
+	if (!philo->args->isdead)
 	{
 		forkpicker(philo);
-		if (!isanyonedead(philo))
-		{
-			pthread_mutex_lock(&philo->args->forks[philo->fork]);
-			pthread_mutex_lock(&philo->args->forks[philo->fork2]);
-		}
+		pthread_mutex_lock(&philo->args->forks[philo->fork]);
+		pthread_mutex_lock(&philo->args->forks[philo->fork2]);
 		print_states(0, get_curr_time() - philo->args->start_time, philo);
-		// pthread_mutex_unlock(&philo->args->forks[philo->fork]);
-		// pthread_mutex_unlock(&philo->args->forks[philo->fork2]);
 	}
 }
 
@@ -38,7 +33,7 @@ void	eat(t_philo *philo)
 				break ;
 		}
 		philo->meals--;
-		if(!isanyonedead(philo))
+		if (!philo->args->isdead)
 		{
 			pthread_mutex_unlock(&philo->args->forks[philo->fork]);
 			philo->fork = 0;
@@ -73,14 +68,14 @@ void *philoact(void *data)
 	philo->args->start_time = get_curr_time();
 	while(!philo->args->isdead && philo->meals != 0)
 	{
-		if (!isanyonedead(philo))
-		{
+		if (!isanyonedead(philo) && !philo->args->isdead)
 			pickup_fork(philo);
+		if (!isanyonedead(philo) && !philo->args->isdead)
 			eat(philo);
+		if (!isanyonedead(philo) && !philo->args->isdead)
 			philo_sleep(philo);
-			if (!isanyonedead(philo))
-				print_states(3, get_curr_time() - philo->args->start_time, philo);
-		}
+		if (!isanyonedead(philo) && !philo->args->isdead)
+			print_states(3, get_curr_time() - philo->args->start_time, philo);
 	}
 	return(0);
 }
