@@ -8,12 +8,13 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Thu Jul 21 15:54:29 2022
+# Make data base, printed on Wed Jul 27 11:33:39 2022
 
 # Variables
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
+ 
 # automatic
 ?F = $(notdir $?)
 # makefile (from `Makefile', line 25)
@@ -49,7 +50,7 @@ VSCODE_CWD = /
 # environment
 PATH = /usr/bin:/bin:/usr/sbin:/sbin
 # environment
-LaunchInstanceID = B1938080-3B2F-4953-B60F-3235C37C4D62
+LaunchInstanceID = 53ADCE5D-8A52-4A94-9D78-51EF1E0F8F76
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
@@ -57,7 +58,7 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 14)
 PATH_BUILD := ./build
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.NSovcRMgvq/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.SseFLT09cs/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -140,6 +141,7 @@ __CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x0
 COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
+ 
 # automatic
 <F = $(notdir $<)
 # environment
@@ -161,9 +163,9 @@ PATH_SRC := ./src
 # environment
 LANG = C
 # environment
-VSCODE_PID = 617
+VSCODE_PID = 558
 # variable set hash-table stats:
-# Load=75/1024=7%, Rehash=0, Collisions=4/118=3%
+# Load=75/1024=7%, Rehash=0, Collisions=4/124=3%
 
 # Pattern-specific Variable Values
 
@@ -171,8 +173,8 @@ VSCODE_PID = 617
 
 # Directories
 
-# . (device 16777233, inode 13852139): 11 files, no impossibilities.
-# src (device 16777233, inode 13852266): 8 files, no impossibilities so far.
+# . (device 16777234, inode 13852139): 11 files, no impossibilities.
+# src (device 16777234, inode 13852266): 8 files, no impossibilities so far.
 
 # 19 files, no impossibilities in 2 directories.
 
@@ -191,16 +193,7 @@ build/objs/%.o: ./src/%.c | ./build
 # Not a target:
 src/actions.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-21 15:51:00
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-src/time.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-06 17:20:11
+#  Last modified 2022-07-21 18:17:52
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -220,9 +213,9 @@ all: philosophers
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
 
 # Not a target:
 .SUFFIXES:
@@ -242,7 +235,7 @@ Makefile:
 build/objs/main.o: src/main.c | build
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `main'
-#  Last modified 2022-07-21 15:51:04
+#  Last modified 2022-07-21 18:00:56
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -254,27 +247,19 @@ build/objs/main.o: src/main.c | build
 
 build:
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-21 15:51:04
+#  Last modified 2022-07-21 18:00:56
 #  File has been updated.
 #  Successfully updated.
 #  commands to execute (from `Makefile', line 41):
 	@mkdir -p $(PATH_BUILD)
 	@mkdir -p $(PATH_OBJS) 
 	
- 
 
-build/objs/time.o: src/time.c | build
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `time'
-#  Last modified 2022-07-21 15:51:04
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 36):
-	@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
-	@printf "\033[36m[Building ${@F}]\033[0m\n"
-	
+# Not a target:
+build/objs/time.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 fclean: clean
 #  Implicit rule search has not been done.
@@ -303,11 +288,11 @@ src/main.c:
 
 philosophers: build/objs/main.o build/objs/argparser.o build/objs/init.o build/objs/prints.o build/objs/actions.o build/objs/time.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-21 15:51:04
+#  Last modified 2022-07-21 18:00:56
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
 #  commands to execute (from `Makefile', line 30):
 	@$(CC) $(CFLAGS) $(LIBFT) $(INCS) -o $(@) $^ -I$(PATH_INCLUDES)
 	@printf "\033[44m[Philo built!]\033[0m\n"
@@ -330,7 +315,7 @@ clean:
 build/objs/prints.o: src/prints.c | build
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `prints'
-#  Last modified 2022-07-21 15:51:04
+#  Last modified 2022-07-21 18:00:56
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -343,7 +328,7 @@ build/objs/prints.o: src/prints.c | build
 build/objs/init.o: src/init.c | build
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `init'
-#  Last modified 2022-07-21 15:51:04
+#  Last modified 2022-07-21 18:00:56
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -356,11 +341,27 @@ build/objs/init.o: src/init.c | build
 build/objs/actions.o: src/actions.c | build
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `actions'
-#  Last modified 2022-07-21 15:51:04
+#  Last modified 2022-07-21 18:00:56
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := build/objs/actions.o
+# automatic
+# % := 
+# automatic
+# * := actions
+# automatic
+# + := src/actions.c
+# automatic
+# | := build
+# automatic
+# < := src/actions.c
+# automatic
+# ^ := src/actions.c
+# automatic
+# ? := src/actions.c
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=8/32=25%, Rehash=0, Collisions=1/17=6%
 #  commands to execute (from `Makefile', line 36):
 	@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
 	@printf "\033[36m[Building ${@F}]\033[0m\n"
@@ -369,7 +370,7 @@ build/objs/actions.o: src/actions.c | build
 # Not a target:
 src/prints.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-21 12:02:07
+#  Last modified 2022-07-21 17:10:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -378,7 +379,8 @@ src/prints.c:
 build/objs/argparser.o: src/argparser.c | build
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `argparser'
-#  Last modified 2022-07-21 15:51:04
+ 
+#  Last modified 2022-07-21 18:00:56
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -391,14 +393,14 @@ build/objs/argparser.o: src/argparser.c | build
 # Not a target:
 src/init.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-21 15:43:54
+#  Last modified 2022-07-21 17:35:14
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=21/1024=2%, Rehash=0, Collisions=7/74=9%
+# Load=20/1024=2%, Rehash=0, Collisions=4/68=6%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -410,6 +412,6 @@ src/init.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Jul 21 15:54:29 2022
+# Finished Make data base on Wed Jul 27 11:33:39 2022
 
  

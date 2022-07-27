@@ -21,6 +21,7 @@ typedef struct t_arguments
 	long long			start_time;
 	pthread_mutex_t		*print;
 	pthread_t			philo[999];
+	pthread_t			check_death;
 	pthread_mutex_t		forks[999];
 }		t_args;
 
@@ -32,7 +33,6 @@ typedef struct s_philo
 	long	last_sleep;
 	int		fork;
 	int		fork2;
-	int 	forkusage;
 	t_args	*args;
 }				t_philo;
 
@@ -59,5 +59,6 @@ void			eat(t_philo *philo);
 void			philo_sleep(t_philo *p);
 long long		get_curr_time(void);
 int				isanyonedead(t_philo *philo);
+void 			*deathchecker(void *data);
 
 #endif

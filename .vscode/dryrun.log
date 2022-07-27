@@ -3,6 +3,7 @@ make: Entering directory `/Users/danielsequeira/Desktop/philo'
 mkdir -p ./build
 mkdir -p ./build/objs 
 gcc -I./incs  -Wall -Wextra -Werror -pthread -fsanitize=address -c src/main.c -o build/objs/main.o
+ 
 printf "\033[36m[Building main.o]\033[0m\n"
 gcc -I./incs  -Wall -Wextra -Werror -pthread -fsanitize=address -c src/argparser.c -o build/objs/argparser.o
 printf "\033[36m[Building argparser.o]\033[0m\n"
@@ -16,5 +17,6 @@ gcc -I./incs  -Wall -Wextra -Werror -pthread -fsanitize=address -c src/time.c -o
 printf "\033[36m[Building time.o]\033[0m\n"
 gcc -Wall -Wextra -Werror -pthread -fsanitize=address  -I./incs  -o philosophers build/objs/main.o build/objs/argparser.o build/objs/init.o build/objs/prints.o build/objs/actions.o build/objs/time.o -I./incs
 printf "\033[44m[Philo built!]\033[0m\n"
+ 
 make: Leaving directory `/Users/danielsequeira/Desktop/philo'
  

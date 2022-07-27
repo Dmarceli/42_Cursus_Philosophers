@@ -1,5 +1,16 @@
 #include "../incs/philo.h"
 
+void *deathchecker(void *data)
+{
+	t_philo	*philo;
+
+	philo = (t_philo *)data;
+	while (1)
+		if(isanyonedead(philo))
+			exit(0);
+}
+
+
 int	isanyonedead(t_philo *philo)
 {
 	if (philo->args->isdead == 0)
@@ -7,6 +18,7 @@ int	isanyonedead(t_philo *philo)
 		if ((get_curr_time() - philo->last_meal) > philo->args->die_t)
 		{
 			philo->args->isdead = 1;
+			//pthread_mutex_lock(philo->args->print);
 			print_states(4, get_curr_time() - philo->args->start_time, philo);
 			pthread_mutex_lock(philo->args->print);
 			exit(0);
