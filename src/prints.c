@@ -18,7 +18,6 @@ int	isanyonedead(t_philo *philo)
 		if ((get_curr_time() - philo->last_meal) > philo->args->die_t)
 		{
 			philo->args->isdead = 1;
-			//pthread_mutex_lock(philo->args->print);
 			print_states(4, get_curr_time() - philo->args->start_time, philo);
 			pthread_mutex_lock(philo->args->print);
 			exit(0);
@@ -45,19 +44,22 @@ int	error_message(void)
 }
 void	print_states(int act, long time, t_philo *philo)
 {
-	pthread_mutex_lock(philo->args->print);
-	if (act == 0)
+	if (philo->meals != 0)
 	{
-		printf("%ldms\tphilo %d has taken a fork\n", time, philo->id);
-		printf("%ldms\tphilo %d has taken a fork\n", time, philo->id);
+		pthread_mutex_lock(philo->args->print);
+		if (act == 0)
+		{
+			printf("%ldms\tphilo %d has taken a fork\n", time, philo->id);
+			printf("%ldms\tphilo %d has taken a fork\n", time, philo->id);
+		}
+		else if (act == 1)
+			printf("%ldms\tphilo %d is eating\n", time, philo->id);
+		else if (act == 2)
+			printf("%ldms\tphilo %d is sleeping\n", time, philo->id);
+		else if (act == 3)
+			printf("%ldms\tphilo %d is thinking\n", time, philo->id);
+		else if (act == 4)
+			printf("%ldms\tphilo %d died\n", time, philo->id);
+		pthread_mutex_unlock(philo->args->print);
 	}
-	else if (act == 1)
-		printf("%ldms\tphilo %d is eating\n", time, philo->id);
-	else if (act == 2)
-		printf("%ldms\tphilo %d is sleeping\n", time, philo->id);
-	else if (act == 3)
-		printf("%ldms\tphilo %d is thinking\n", time, philo->id);
-	else if (act == 4)
-		printf("%ldms\tphilo %d died\n", time, philo->id);
-	pthread_mutex_unlock(philo->args->print);
 }
