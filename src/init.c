@@ -4,10 +4,9 @@ void	join_threads(t_args *args)
 {
 	int		i;
 
-	i = 1;
-	while (i < args->philo_n)
-		while (!args->isdead)
-			pthread_join(args->philo[i++], NULL);
+	i = -1;
+	while (++i < args->philo_n)
+			pthread_join(args->philo[i], NULL);
 }
 
 int	init_mutex(t_args *args)
@@ -25,15 +24,15 @@ int	init_mutex(t_args *args)
 		all.philo[i] = (t_philo *)malloc(sizeof(t_philo)) ;
 		all.philo[i]->args = args;
 		all.philo[i]->id = i + 1;
-		all.philo[i]->args->isdead = 0;
+		//all.philo[i]->args->isdead = 0;
 		all.philo[i]->last_meal = get_curr_time();
 		all.philo[i]->meals = args->times_eat;
 		pthread_create(&args->philo[i] , NULL, philoact, (void *)all.philo[i]);
-		usleep(100);
+		usleep(150);
 	}
 	i = -1;	
-	while (++i < args->philo_n)
-		pthread_create(&args->check_death, NULL, deathchecker, (void*)all.philo[i]);
+	//while (++i < args->philo_n)
+		//pthread_create(&args->check_death, NULL, deathchecker, (void*)all.philo[i]);
 	join_threads(args);
 	return (0);
 }
@@ -49,6 +48,7 @@ int	init_philo(int ac, char **av)
 	args->eat_t = ft_atoi(av[3]);
 	args->sleep_t = ft_atoi(av[4]);
 	args->times_eat = -1;
+	args->start_time = get_curr_time();
 	args->isdead = 0;
 	if (args->philo_n < 1 || args->die_t < 0 || args->eat_t < 0
 	|| args->sleep_t < 0 || args->philo_n > 250)

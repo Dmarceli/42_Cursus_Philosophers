@@ -3,10 +3,10 @@ YELLOW		=	\e[38;5;226m
 RED			=	\e[0;31m
 RESET		=	\e[0m
 
-NAME	:= philosophers
+NAME	:= philo
 
 CC		:=	gcc
-CFLAGS	:= -Wall -Wextra -Werror -pthread -fsanitize=address
+CFLAGS	:= -Wall -Wextra -Werror -fsanitize=thread 
 
 PATH_SRC		:=	./src
 PATH_INCLUDES	:=	./incs

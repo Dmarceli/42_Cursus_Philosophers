@@ -60,5 +60,6 @@ void			philo_sleep(t_philo *p);
 long long		get_curr_time(void);
 int				isanyonedead(t_philo *philo);
 void 			*deathchecker(void *data);
+void			destroy_mutex(t_philo *philo);
 
 #endif

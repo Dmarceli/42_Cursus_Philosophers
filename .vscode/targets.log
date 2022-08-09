@@ -1,169 +1,271 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-# GNU Make 3.81
-# Copyright (C) 2006  Free Software Foundation, Inc.
-# This is free software; see the source for copying conditions.
-# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
-# PARTICULAR PURPOSE.
+# GNU Make 4.3
+# Built for x86_64-unknown-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
 
-# This program built for i386-apple-darwin11.3.0
- 
-
-# Make data base, printed on Tue Aug  9 17:15:31 2022
+# Make data base, printed on Tue Aug  9 18:55:24 2022
 
 # Variables
 
-# automatic
-<D = $(patsubst %/,%,$(dir $<))
-# automatic
-?F = $(notdir $?)
-# makefile (from `Makefile', line 25)
+# makefile (from 'Makefile', line 25)
 OBJ :=   ./build/objs/main.o  ./build/objs/argparser.o  ./build/objs/init.o  ./build/objs/prints.o  ./build/objs/actions.o  ./build/objs/time.o 
-# automatic
-?D = $(patsubst %/,%,$(dir $?))
-# automatic
-@D = $(patsubst %/,%,$(dir $@))
-# automatic
-@F = $(notdir $@)
-# makefile
-CURDIR := /Users/danielsequeira/Desktop/42_Cursus_Philosophers
-# makefile
-SHELL = /bin/sh
-# makefile (from `Makefile', line 17)
-BIN := ./philosophers
-# environment
-VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
-# environment
-_ = /usr/bin/make
-# makefile (from `Makefile', line 9)
-CFLAGS := -Wall -Wextra -Werror -pthread -fsanitize=address
-# makefile (from `Makefile', line 1)
-MAKEFILE_LIST :=  Makefile
-# makefile (from `Makefile', line 15)
+# makefile (from 'Makefile', line 15)
 PATH_OBJS := ./build/objs
 # environment
-__CFBundleIdentifier = com.microsoft.VSCode
-# makefile (from `Makefile', line 13)
-INCS := -I./incs 
+GDK_BACKEND = x11
 # environment
-VSCODE_CWD = /
+LC_ALL = C
+# makefile (from 'Makefile', line 12)
+PATH_INCLUDES := ./incs
 # environment
-PATH = /usr/bin:/bin:/usr/sbin:/sbin
+GJS_DEBUG_OUTPUT = stderr
 # environment
-LaunchInstanceID = D3476F96-0961-4A71-A21B-28F2B3EB4B93
+GNOME_KEYRING_CONTROL = /nfs/homes/dmarceli/.cache/keyring-U8UMQ1
 # environment
-ELECTRON_RUN_AS_NODE = 1
+SBX_CHROME_API_RQ = 1
+# environment
+VSCODE_CWD = /nfs/homes/dmarceli
+# environment
+LIBVIRT_DEFAULT_URI = qemu:///system
 # default
-.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
-# makefile (from `Makefile', line 14)
-PATH_BUILD := ./build
+MAKE_COMMAND := make
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.BnNxPy1Cy7/Listeners
+QT_ACCESSIBILITY = 1
 # automatic
-%F = $(notdir $%)
-# environment
-PWD = /Users/danielsequeira/Desktop/42_Cursus_Philosophers
-# environment
-ORIGINAL_XDG_CURRENT_DESKTOP = undefined
-# makefile (from `Makefile', line 1)
-GREEN = \e[38;5;118m
-# environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
-# environment
-HOME = /Users/danielsequeira
-# default
-MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
-# environment
-VSCODE_CODE_CACHE_PATH = /Users/danielsequeira/Library/Application Support/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
-# environment
-LOGNAME = danielsequeira
-# environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+@D = $(patsubst %/,%,$(dir $@))
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
-# automatic
-^D = $(patsubst %/,%,$(dir $^))
-# environment
-XPC_FLAGS = 0x0
-# default
-MAKE = $(MAKE_COMMAND)
-# default
-MAKECMDGOALS := all
-# makefile (from `Makefile', line 18)
-SRCS := ./src/main.c ./src/argparser.c ./src/init.c ./src/prints.c ./src/actions.c ./src/time.c 
-# environment
-SHLVL = 1
-# makefile (from `Makefile', line 8)
-CC := gcc
-# default
-MAKE_VERSION := 3.81
-# environment
-USER = danielsequeira
-# makefile
-.DEFAULT_GOAL := all
-# makefile (from `Makefile', line 6)
-NAME := philosophers
-# automatic
-%D = $(patsubst %/,%,$(dir $%))
-# default
-MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
 # default
 .VARIABLES := 
 # environment
-TMPDIR = /var/folders/m8/7sw_6_cd1dx7mnqq04v34v840000gn/T/
+PWD = /nfs/homes/dmarceli/Desktop/42_Cursus_Philosophers
+# environment
+ZYPAK_ZYGOTE_STRATEGY_SPAWN = 1
 # automatic
-*F = $(notdir $*)
+%D = $(patsubst %/,%,$(dir $%))
 # environment
-VSCODE_IPC_HOOK = /Users/danielsequeira/Library/Application Support/Code/1.69.2-main.sock
+GI_TYPELIB_PATH = /app/lib/girepository-1.0
 # environment
-MallocNanoZone = 0
-# makefile (from `Makefile', line 3)
-RED = \e[0;31m
-# makefile
-MAKEFLAGS = Rrqp
-# environment
-MFLAGS = -Rrqp
+XDG_DATA_DIRS = /app/share:/usr/share:/usr/share/runtime/share:/run/host/user-share:/run/host/share
+# makefile (from 'Makefile', line 14)
+PATH_BUILD := ./build
 # automatic
-*D = $(patsubst %/,%,$(dir $*))
-# makefile (from `Makefile', line 12)
-PATH_INCLUDES := ./incs
-# environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.14890555.14890561
+^D = $(patsubst %/,%,$(dir $^))
 # automatic
-+D = $(patsubst %/,%,$(dir $+))
-# makefile (from `Makefile', line 2)
-YELLOW = \e[38;5;226m
-# automatic
-+F = $(notdir $+)
+%F = $(notdir $%)
 # environment
-__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x0
+VSCODE_CODE_CACHE_PATH = /nfs/homes/dmarceli/.var/app/com.visualstudio.code/config/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
 # environment
-COMMAND_MODE = unix2003
-# default
-MAKEFILES := 
-# automatic
-<F = $(notdir $<)
-# environment
-LC_ALL = C
-# makefile (from `Makefile', line 4)
-RESET = \e[0m
-# environment
-SECURITYSESSIONID = 186b1
-# automatic
-^F = $(notdir $^)
-# default
-SUFFIXES := 
-# default
-.INCLUDE_DIRS = /usr/local/include
-# environment
-MAKELEVEL := 0
-# makefile (from `Makefile', line 11)
-PATH_SRC := ./src
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session26
 # environment
 LANG = C
 # environment
-VSCODE_PID = 649
+XAUTHORITY = /run/flatpak/Xauthority
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/include /usr/include
+# environment
+ALSA_CONFIG_DIR = /usr/share/alsa
+# makefile
+MAKEFLAGS = pqrR
+# environment
+ZYPAK_SPAWN_LATEST_ON_REEXEC = 0
+# makefile (from 'Makefile', line 11)
+PATH_SRC := ./src
+# makefile
+CURDIR := /nfs/homes/dmarceli/Desktop/42_Cursus_Philosophers
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# makefile (from 'Makefile', line 18)
+SRCS := ./src/main.c ./src/argparser.c ./src/init.c ./src/prints.c ./src/actions.c ./src/time.c 
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+ZYPAK_LIB = /app/bin/../lib
+# environment
+MFLAGS = -pqrR
+# environment
+SSH_AUTH_SOCK = /run/flatpak/ssh-auth
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_CONFIG_DIRS = /app/etc/xdg:/etc/xdg
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+ALSA_CONFIG_PATH = /usr/share/alsa/alsa-flatpak.conf
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
+# environment
+FLATPAK_SANDBOX_DIR = /nfs/homes/dmarceli/.var/app/com.visualstudio.code/sandbox
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_PID = 23
+# environment
+KRB5CCNAME = FILE:/tmp/krb5cc_10520_JhUiQc
+# environment
+XDG_SESSION_TYPE = x11
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+AT_SPI_BUS_ADDRESS = unix:path=/run/flatpak/at-spi-bus
+# environment
+XDG_DATA_HOME = /nfs/homes/dmarceli/.var/app/com.visualstudio.code/data
+# environment
+SANDBOX_LD_PRELOAD = /app/bin/../lib/libzypak-preload-host.so:/app/bin/../lib/libzypak-preload-host-spawn-strategy.so
+# environment
+SESSION_MANAGER = local/c2r5s2.42lisboa.com:@/tmp/.ICE-unix/878996,unix/c2r5s2.42lisboa.com:/tmp/.ICE-unix/878996
+# automatic
+*F = $(notdir $*)
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/flatpak/bus
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+__EGL_EXTERNAL_PLATFORM_CONFIG_DIRS = /etc/egl/egl_external_platform.d:/usr/lib/x86_64-linux-gnu/GL/egl/egl_external_platform.d:/usr/share/egl/egl_external_platform.d
+# default
+MAKE_HOST := x86_64-unknown-linux-gnu
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# makefile
+SHELL = /bin/sh
+# default
+MAKECMDGOALS := all
+# environment
+XMODIFIERS = @im=ibus
+# environment
+LD_LIBRARY_PATH = /app/lib
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# environment
+SANDBOX_LD_LIBRARY_PATH = /app/lib
+# environment
+SHLVL = 0
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /app/bin:/app/bin:/app/bin:/usr/bin:/nfs/homes/dmarceli/.var/app/com.visualstudio.code/data/node_modules/bin
+# default
+MAKEFILES := 
+# automatic
+^F = $(notdir $^)
+# environment
+DBUS_SYSTEM_BUS_ADDRESS = unix:path=/run/dbus/system_bus_socket
+# makefile (from 'Makefile', line 2)
+YELLOW = \e[38;5;226m
+# environment
+XDG_CONFIG_HOME = /nfs/homes/dmarceli/.var/app/com.visualstudio.code/config
+# makefile (from 'Makefile', line 13)
+INCS := -I./incs 
+# makefile (from 'Makefile', line 1)
+GREEN = \e[38;5;118m
+# environment
+DOCKER_HOST = unix:///run/user/10520/docker.sock
+# automatic
+?F = $(notdir $?)
+# makefile (from 'Makefile', line 6)
+NAME := philo
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# automatic
++F = $(notdir $+)
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+DESKTOP_SESSION = ubuntu
+# environment
+GST_PLUGIN_SYSTEM_PATH = /app/lib/gstreamer-1.0:/usr/lib/extensions/gstreamer-1.0:/usr/lib/x86_64-linux-gnu/gstreamer-1.0
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+LOGNAME = dmarceli
+# environment
+container = flatpak
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /var/lib/flatpak/exports/share/applications/com.visualstudio.code.desktop
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from 'Makefile', line 3)
+RED = \e[0;31m
+# environment
+NPM_CONFIG_GLOBALCONFIG = /app/etc/npmrc
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+USER = dmarceli
+# environment
+DISPLAY = :99.0
+# default
+MAKE_VERSION := 4.3
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 888322
+# environment
+SSH_AGENT_PID = 879095
+# environment
+_ = /usr/bin/make
+# makefile (from 'Makefile', line 4)
+RESET = \e[0m
+# makefile (from 'Makefile', line 17)
+BIN := ./philo
+# environment
+XDG_RUNTIME_DIR = /run/user/10520
+# makefile (from 'Makefile', line 9)
+CFLAGS := -Wall -Wextra -Werror -fsanitize=thread -g
+# environment
+GPG_AGENT_INFO = /run/user/10520/gnupg/S.gpg-agent:0:1
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /nfs/homes/dmarceli
+# environment
+QT_IM_MODULE = ibus
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/10520/vscode-6f355980-1.69.2-main.sock
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# environment
+XDG_CACHE_HOME = /nfs/homes/dmarceli/.var/app/com.visualstudio.code/cache
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/dmarceli
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# makefile (from 'Makefile', line 8)
+CC := gcc
+# environment
+FLATPAK_ID = com.visualstudio.code
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
+ZYPAK_BIN = /app/bin
+# environment
+GDMSESSION = ubuntu
 # variable set hash-table stats:
-# Load=75/1024=7%, Rehash=0, Collisions=4/118=3%
+# Load=127/1024=12%, Rehash=0, Collisions=24/174=14%
 
 # Pattern-specific Variable Values
 
@@ -171,128 +273,109 @@ VSCODE_PID = 649
 
 # Directories
 
-# . (device 16777234, inode 15023670): 11 files, no impossibilities.
-# src (device 16777234, inode 15023759): 8 files, no impossibilities so far.
+# src (device 64768, inode 8393998): 8 files, no impossibilities so far.
+# . (device 64768, inode 8018677): 12 files, no impossibilities.
 
-# 19 files, no impossibilities in 2 directories.
+# 20 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
-build/objs/%.o: ./src/%.c | ./build
-#  commands to execute (from `Makefile', line 36):
-	@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
-	@printf "\033[36m[Building ${@F}]\033[0m\n"
-	
+build/objs/%.o: src/%.c | build
+#  recipe to execute (from 'Makefile', line 36):
+		@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
+		@printf "\033[36m[Building ${@F}]\033[0m\n"
 
 # 1 implicit rules, 0 (0.0%) terminal.
-
 # Files
 
-# Not a target:
-src/actions.c:
+build/objs/time.o: src/time.c | build
 #  Implicit rule search has been done.
-#  Last modified 2022-08-04 16:08:56
+#  Implicit/static pattern stem: 'time'
+ 
+#  Last modified 2022-08-09 18:55:11.240234197
 #  File has been updated.
 #  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  recipe to execute (from 'Makefile', line 36):
+		@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
+		@printf "\033[36m[Building ${@F}]\033[0m\n"
 
-# Not a target:
-src/time.c:
+build/objs/actions.o: src/actions.c | build
 #  Implicit rule search has been done.
-#  Last modified 2022-08-04 15:48:58
+#  Implicit/static pattern stem: 'actions'
+#  Last modified 2022-08-09 18:55:11.212234218
 #  File has been updated.
 #  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-src/argparser.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-04 15:48:58
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-all: philosophers
-#  Command-line target.
-#  Implicit rule search has been done.
-#  File does not exist.
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-.SUFFIXES:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 36):
+		@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
+		@printf "\033[36m[Building ${@F}]\033[0m\n"
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-04 15:48:58
+#  Last modified 2022-08-09 18:55:09.560235475
 #  File has been updated.
 #  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-build/objs/main.o: src/main.c | build
+# Not a target:
+src/time.c:
 #  Implicit rule search has been done.
-#  Implicit/static pattern stem: `main'
-#  Last modified 2022-08-04 16:09:20
+#  Last modified 2022-08-09 17:59:29.665858645
 #  File has been updated.
 #  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 36):
-	@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
-	@printf "\033[36m[Building ${@F}]\033[0m\n"
-	
 
-build:
-#  Implicit rule search has not been done.
-#  Last modified 2022-08-04 16:09:20
-#  File has been updated.
-#  Successfully updated.
-#  commands to execute (from `Makefile', line 41):
-	@mkdir -p $(PATH_BUILD)
-	@mkdir -p $(PATH_OBJS) 
-	
-
-build/objs/time.o: src/time.c | build
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `time'
-#  Last modified 2022-08-04 16:09:20
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 36):
-	@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
-	@printf "\033[36m[Building ${@F}]\033[0m\n"
-	
-
-fclean: clean
+clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 49):
-	@rm -rf $(PATH_BUILD) $(NAME)
-	@rm -rf $(BIN)
-	@printf "\033[38;5;1m[Cleaning Bin!]\033[0m\n"
-	
+#  recipe to execute (from 'Makefile', line 45):
+		@printf "\033[38;5;1m[Cleaning objects!]\033[0m\n"
+		@rm -rf $(PATH_OBJS)
+
+# Not a target:
+src/argparser.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-09 17:17:23.986890825
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 src/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-04 15:59:38
+#  Last modified 2022-08-09 17:33:31.524935311
 #  File has been updated.
 #  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+re: fclean all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+build/objs/main.o: src/main.c | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'main'
+#  Last modified 2022-08-09 18:55:11.072234325
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 36):
+		@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
+		@printf "\033[36m[Building ${@F}]\033[0m\n"
+
+build/objs/init.o: src/init.c | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'init'
+#  Last modified 2022-08-09 18:55:11.140234273
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 36):
+		@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
+		@printf "\033[36m[Building ${@F}]\033[0m\n"
+
+# Not a target:
+src/prints.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-09 18:53:57.26028963
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 .DEFAULT:
@@ -300,116 +383,88 @@ src/main.c:
 #  Modification time never checked.
 #  File has not been updated.
 
-philosophers: build/objs/main.o build/objs/argparser.o build/objs/init.o build/objs/prints.o build/objs/actions.o build/objs/time.o
-#  Implicit rule search has not been done.
-#  Last modified 2022-08-04 16:09:20
+all: philo
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
 #  File has been updated.
 #  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 30):
-	@$(CC) $(CFLAGS) $(LIBFT) $(INCS) -o $(@) $^ -I$(PATH_INCLUDES)
- 
-	@printf "\033[44m[Philo built!]\033[0m\n"
-	
 
-re: fclean all
+fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+#  recipe to execute (from 'Makefile', line 49):
+		@rm -rf $(PATH_BUILD) $(NAME)
+		@rm -rf $(BIN)
+		@printf "\033[38;5;1m[Cleaning Bin!]\033[0m\n"
 
-clean:
+build:
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 45):
-	@printf "\033[38;5;1m[Cleaning objects!]\033[0m\n"
-	@rm -rf $(PATH_OBJS)
-	
-
-build/objs/prints.o: src/prints.c | build
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `prints'
-#  Last modified 2022-08-04 16:09:20
+#  Last modified 2022-08-09 18:55:11.048234343
 #  File has been updated.
 #  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 36):
-	@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
-	@printf "\033[36m[Building ${@F}]\033[0m\n"
-	
-
-build/objs/init.o: src/init.c | build
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `init'
-#  Last modified 2022-08-04 16:09:20
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 36):
-	@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
-	@printf "\033[36m[Building ${@F}]\033[0m\n"
-	
-
-build/objs/actions.o: src/actions.c | build
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `actions'
-#  Last modified 2022-08-04 16:09:20
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 36):
-	@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
-	@printf "\033[36m[Building ${@F}]\033[0m\n"
-	
-
-# Not a target:
-src/prints.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-04 15:59:45
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  recipe to execute (from 'Makefile', line 41):
+		@mkdir -p $(PATH_BUILD)
+		@mkdir -p $(PATH_OBJS) 
 
 build/objs/argparser.o: src/argparser.c | build
 #  Implicit rule search has been done.
-#  Implicit/static pattern stem: `argparser'
-#  Last modified 2022-08-04 16:09:20
+#  Implicit/static pattern stem: 'argparser'
+#  Last modified 2022-08-09 18:55:11.108234297
 #  File has been updated.
 #  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 36):
-	@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
-	@printf "\033[36m[Building ${@F}]\033[0m\n"
-	
+#  recipe to execute (from 'Makefile', line 36):
+		@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
+		@printf "\033[36m[Building ${@F}]\033[0m\n"
+
+# Not a target:
+src/actions.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-09 18:53:29.824309704
+#  File has been updated.
+#  Successfully updated.
+
+build/objs/prints.o: src/prints.c | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'prints'
+#  Last modified 2022-08-09 18:55:11.172234249
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 36):
+		@$(CC) $(INCS) $(CFLAGS) -c $(^) -o $@
+		@printf "\033[36m[Building ${@F}]\033[0m\n"
+
+philo: build/objs/main.o build/objs/argparser.o build/objs/init.o build/objs/prints.o build/objs/actions.o build/objs/time.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-08-09 18:55:11.28823416
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 30):
+		@$(CC) $(CFLAGS) $(LIBFT) $(INCS) -o $(@) $^ -I$(PATH_INCLUDES)
+		@printf "\033[44m[Philo built!]\033[0m\n"
 
 # Not a target:
 src/init.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-04 16:04:14
+#  Last modified 2022-08-09 18:50:02.636451069
 #  File has been updated.
 #  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=21/1024=2%, Rehash=0, Collisions=7/74=9%
+# Load=21/1024=2%, Rehash=0, Collisions=0/73=0%
 # VPATH Search Paths
 
-# No `vpath' search paths.
+# No 'vpath' search paths.
 
-# No general (`VPATH' variable) search path.
+# No general ('VPATH' variable) search path.
 
-# # of strings in strcache: 1
-# # of strcache buffers: 1
-# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
-# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+# strcache buffers: 1 (0) / strings = 45 / storage = 447 B / avg = 9 B
+# current buf: size = 8162 B / used = 447 B / count = 45 / avg = 9 B
 
-# Finished Make data base on Tue Aug  9 17:15:31 2022
+# strcache performance: lookups = 84 / hit rate = 46%
+# hash-table stats:
+# Load=45/8192=1%, Rehash=0, Collisions=0/84=0%
+# Finished Make data base on Tue Aug  9 18:55:24 2022
 
  
