@@ -65,14 +65,10 @@ void *philoact(void *data)
 	philo->args->start_time = get_curr_time();
 	while(!philo->args->isdead && philo->meals != 0)
 	{
-		if (!isanyonedead(philo) && !philo->args->isdead)
-			pickup_fork(philo);
-		if (!isanyonedead(philo) && !philo->args->isdead)
-			eat(philo);
-		if (!isanyonedead(philo) && !philo->args->isdead)
-			philo_sleep(philo);
-		if (!isanyonedead(philo) && !philo->args->isdead)
-			print_states(3, get_curr_time() - philo->args->start_time, philo);
+		pickup_fork(philo);
+		eat(philo);
+		philo_sleep(philo);
+		print_states(3, get_curr_time() - philo->args->start_time, philo);
 	}
 	return(0);
 }

@@ -56,7 +56,7 @@ int	init_philo(int ac, char **av)
 	if (ac == 6)
 		args->times_eat = ft_atoi(av[5]);
 	if (args->philo_n == 1)
-	{
+	{	
 		usleep(args->die_t * 1000);
 		printf("%d\tPhilo\t1\tdied\n", args->die_t);
 		exit(0);
