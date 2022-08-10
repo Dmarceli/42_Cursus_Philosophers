@@ -19,6 +19,7 @@ typedef struct t_arguments
 	int					times_eat;
 	int					isdead;
 	pthread_mutex_t		isdead_mutex;
+	pthread_mutex_t		last_meal_mutex;
 	long long			start_time;
 	pthread_mutex_t		*print;
 	pthread_t			philo[999];
@@ -32,7 +33,6 @@ typedef struct s_philo
 	int		id;
 	int		meals;
 	long	last_meal;
-	pthread_mutex_t	last_meal_mutex;
 	long	last_sleep;
 	int		fork;
 	int		fork2;

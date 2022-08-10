@@ -20,18 +20,18 @@ int	isanyonedead(t_philo *philo)
 {
 	if (philo->args->isdead == 0)
 	{
-		pthread_mutex_lock(&(philo->last_meal_mutex));
+		pthread_mutex_lock(&(philo->args->last_meal_mutex));
 		if ((get_curr_time() - philo->last_meal) > philo->args->die_t)
 		{
-			pthread_mutex_unlock(&(philo->last_meal_mutex));
 			if (philo->meals != 0)
 				print_states(4, get_curr_time() - philo->args->start_time, philo);
 			pthread_mutex_lock(philo->args->print);
-			//destroy_mutex(philo);
+			//pthread_mutex_unlock(&(philo->args->last_meal_mutex));
+			destroy_mutex(philo);
 			exit(0);
 			return (1);
 		}
-		pthread_mutex_unlock(&(philo->last_meal_mutex));
+		pthread_mutex_unlock(&(philo->args->last_meal_mutex));
 	}
 	return (0);
 }
@@ -54,7 +54,6 @@ int	error_message(void)
 void	print_states(int act, long time, t_philo *philo)
 {
 	{
-		pthread_mutex_lock(philo->args->print);
 		if (act == 0)
 		{
 			printf("%ldms\tphilo %d has taken a fork\n", time, philo->id);
@@ -68,7 +67,7 @@ void	print_states(int act, long time, t_philo *philo)
 			printf("%ldms\tphilo %d is thinking\n", time, philo->id);
 		else if (act == 4)
 			printf("%ldms\tphilo %d died\n", time, philo->id);
-		if (!philo->args->isdead)
-			pthread_mutex_unlock(philo->args->print);
+		// if (!philo->args->isdead)
+		// 	pthread_mutex_unlock(philo->args->print);
 	}
 }

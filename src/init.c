@@ -21,7 +21,7 @@ int	init_mutex(t_args *args)
 	i = -1;
 	while (++i < args->philo_n)
 		pthread_mutex_init(&(args->forks[i]), 0);
-	pthread_mutex_init(&(args->isdead_mutex), 0);
+	pthread_mutex_init(&(args->last_meal_mutex), NULL);
 	i = -1;	
 	while (++i < args->philo_n)
 	{

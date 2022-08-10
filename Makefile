@@ -6,7 +6,7 @@ RESET		=	\e[0m
 NAME	:= philo
 
 CC		:=	gcc
-CFLAGS	:= -Wall -Wextra -Werror -pthread -O3 #-fsanitize=thread   
+CFLAGS	:= -Wall -Wextra -Werror -pthread #-fsanitize=thread   
 
 PATH_SRC		:=	./src
 PATH_INCLUDES	:=	./incs
