@@ -1,5 +1,5 @@
 make --dry-run --keep-going --print-directory
-make: Entering directory '/nfs/homes/dmarceli/Desktop/42_Cursus_Philosophers'
-make: Nothing to be done for 'all'.
-make: Leaving directory '/nfs/homes/dmarceli/Desktop/42_Cursus_Philosophers'
+make: Entering directory `/Users/danielsequeira/Desktop/42_Cursus_Philosophers'
+make: Nothing to be done for `all'.
+make: Leaving directory `/Users/danielsequeira/Desktop/42_Cursus_Philosophers'
  

@@ -5,12 +5,11 @@ void *deathchecker(void *data)
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
-	while (!philo->args->isdead)
+	while (1)
 	{
 		if(isanyonedead(philo))
-		{
 			exit(0);
-		}
+
 	}
 	exit(0);
 
@@ -21,15 +20,18 @@ int	isanyonedead(t_philo *philo)
 {
 	if (philo->args->isdead == 0)
 	{
+		pthread_mutex_lock(&(philo->last_meal_mutex));
 		if ((get_curr_time() - philo->last_meal) > philo->args->die_t)
 		{
-			philo->args->isdead = 1;
-			print_states(4, get_curr_time() - philo->args->start_time, philo);
-			//pthread_mutex_lock(philo->args->print);
-			destroy_mutex(philo);
+			pthread_mutex_unlock(&(philo->last_meal_mutex));
+			if (philo->meals != 0)
+				print_states(4, get_curr_time() - philo->args->start_time, philo);
+			pthread_mutex_lock(philo->args->print);
+			//destroy_mutex(philo);
 			exit(0);
 			return (1);
 		}
+		pthread_mutex_unlock(&(philo->last_meal_mutex));
 	}
 	return (0);
 }
@@ -66,6 +68,7 @@ void	print_states(int act, long time, t_philo *philo)
 			printf("%ldms\tphilo %d is thinking\n", time, philo->id);
 		else if (act == 4)
 			printf("%ldms\tphilo %d died\n", time, philo->id);
-		pthread_mutex_unlock(philo->args->print);
+		if (!philo->args->isdead)
+			pthread_mutex_unlock(philo->args->print);
 	}
 }

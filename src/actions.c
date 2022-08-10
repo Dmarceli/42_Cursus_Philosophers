@@ -25,7 +25,9 @@ void	eat(t_philo *philo)
 {
 	if (philo->meals != 0 && !philo->args->isdead)
 	{
+		pthread_mutex_lock(&(philo->last_meal_mutex));
 		philo->last_meal = get_curr_time();
+		pthread_mutex_unlock(&(philo->last_meal_mutex));
 		print_states(1, get_curr_time() - philo->args->start_time, philo);	
 		while (philo->args->eat_t > (get_curr_time() - philo->last_meal))
 		{
@@ -63,6 +65,7 @@ void *philoact(void *data)
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
+	pthread_mutex_init(&(philo->last_meal_mutex), NULL);
 	//philo->args->start_time = get_curr_time();
 	while(!philo->args->isdead && philo->meals != 0)
 	{
@@ -71,5 +74,6 @@ void *philoact(void *data)
 		philo_sleep(philo);
 		print_states(3, get_curr_time() - philo->args->start_time, philo);
 	}
+	pthread_mutex_destroy(&(philo->last_meal_mutex));
 	return(0);
 }
