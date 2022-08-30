@@ -1,5 +1,16 @@
-#include "../incs/philo.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   time.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmarceli <dmarceli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/30 16:15:55 by dmarceli          #+#    #+#             */
+/*   Updated: 2022/08/30 16:18:15 by dmarceli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../incs/philo.h"
 
 void	destroy_mutex(t_philo *philo)
 {
@@ -14,13 +25,12 @@ void	destroy_mutex(t_philo *philo)
 	pthread_mutex_destroy((philo->args->print));
 }
 
-
 long long	get_curr_time(void)
 {
 	struct timeval	time;
-	long long	usec;
-	long long	sec;
-	long long	msec;
+	long long		usec;
+	long long		sec;
+	long long		msec;
 
 	gettimeofday(&time, NULL);
 	usec = (time.tv_usec / 1000);

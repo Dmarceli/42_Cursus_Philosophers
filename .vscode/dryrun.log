@@ -1,6 +1,20 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory `/Users/danielsequeira/Desktop/42_Cursus_Philosophers'
-make: Nothing to be done for `all'.
- 
-make: Leaving directory `/Users/danielsequeira/Desktop/42_Cursus_Philosophers'
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/nfs/homes/dmarceli/Desktop/42_Cursus_Philosophers'
+mkdir -p ./build
+mkdir -p ./build/objs 
+gcc -I./incs  -Wall -Wextra -Werror -pthread  -c src/main.c -o build/objs/main.o
+printf "\033[36m[Building main.o]\033[0m\n"
+gcc -I./incs  -Wall -Wextra -Werror -pthread  -c src/argparser.c -o build/objs/argparser.o
+printf "\033[36m[Building argparser.o]\033[0m\n"
+gcc -I./incs  -Wall -Wextra -Werror -pthread  -c src/init.c -o build/objs/init.o
+printf "\033[36m[Building init.o]\033[0m\n"
+gcc -I./incs  -Wall -Wextra -Werror -pthread  -c src/prints.c -o build/objs/prints.o
+printf "\033[36m[Building prints.o]\033[0m\n"
+gcc -I./incs  -Wall -Wextra -Werror -pthread  -c src/actions.c -o build/objs/actions.o
+printf "\033[36m[Building actions.o]\033[0m\n"
+gcc -I./incs  -Wall -Wextra -Werror -pthread  -c src/time.c -o build/objs/time.o
+printf "\033[36m[Building time.o]\033[0m\n"
+gcc -Wall -Wextra -Werror -pthread   -I./incs  -o philo build/objs/main.o build/objs/argparser.o build/objs/init.o build/objs/prints.o build/objs/actions.o build/objs/time.o -I./incs
+printf "\033[44m[Philo built!]\033[0m\n"
+make: Leaving directory '/nfs/homes/dmarceli/Desktop/42_Cursus_Philosophers'
  

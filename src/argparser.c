@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   argparser.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmarceli <dmarceli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/30 16:15:38 by dmarceli          #+#    #+#             */
+/*   Updated: 2022/08/30 16:46:21 by dmarceli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../incs/philo.h"
 
 int	ft_atoi(const char *str)
@@ -28,7 +40,6 @@ int	ft_atoi(const char *str)
 	return (num);
 }
 
-
 int	isnum(char *str)
 {
 	int	i;
@@ -40,18 +51,18 @@ int	isnum(char *str)
 	return (1);
 }
 
-int argparser(int ac, char **av)
+int	argparser(int ac, char **av)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (ac == 5 || ac == 6)
 	{
 		while (++i < ac)
 			if (!av[i] || !isnum(av[i]))
-				return(error_message());
-		return(1);
+				return (error_message());
+		return (1);
 	}
 	else
-		return(error_message());
+		return (error_message());
 }
