@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dmarceli <dmarceli@student.42.fr>          +#+  +:+       +#+         #
+#    By: danielsequeira <danielsequeira@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 16:16:03 by dmarceli          #+#    #+#              #
-#    Updated: 2022/10/10 20:04:14 by dmarceli         ###   ########.fr        #
+#    Updated: 2022/10/10 22:44:27 by danielseque      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RESET		=	\e[0m
 NAME	:= philo
 
 CC		:=	gcc
-CFLAGS	:= -g -Wall -Wextra -Werror -pthread #-fsanitize=thread   
+CFLAGS	:= -Wall -Wextra -Werror -pthread #-fsanitize=thread   
 
 PATH_SRC		:=	./src
 PATH_INCLUDES	:=	./incs

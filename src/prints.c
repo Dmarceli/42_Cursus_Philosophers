@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prints.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmarceli <dmarceli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danielsequeira <danielsequeira@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:15:52 by dmarceli          #+#    #+#             */
-/*   Updated: 2022/10/10 22:03:04 by dmarceli         ###   ########.fr       */
+/*   Updated: 2022/10/10 22:49:28 by danielseque      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void *deathchecker(void *data)
 			destroy_mutex(philo);
 			break;
 		}
-		// exit(0);
 	}
 	return (data);
 }
@@ -36,12 +35,10 @@ int isanyonedead(t_philo *philo)
 		pthread_mutex_lock(&(philo->args->last_meal_mutex));
 		if ((get_curr_time() - philo->last_meal) > philo->args->die_t)
 		{
+			pthread_mutex_unlock(&(philo->args->last_meal_mutex));
 			if (philo->meals != 0)
 				print_states(4,
 							 get_curr_time() - philo->args->start_time, philo);
-			pthread_mutex_unlock(&(philo->args->last_meal_mutex));
-			// destroy_mutex(philo);
-			// exit(0);
 			return (1);
 		}
 		pthread_mutex_unlock(&(philo->args->last_meal_mutex));

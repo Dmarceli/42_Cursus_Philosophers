@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmarceli <dmarceli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danielsequeira <danielsequeira@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:15:42 by dmarceli          #+#    #+#             */
-/*   Updated: 2022/10/10 22:04:14 by dmarceli         ###   ########.fr       */
+/*   Updated: 2022/10/10 22:51:59 by danielseque      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	join_threads(t_args *args)
 	while (++i < args->philo_n)
 		pthread_join(args->philo[i], NULL);
 	pthread_mutex_destroy(&args->print);
+	pthread_mutex_destroy(&args->last_meal_mutex);
 	exit(0);
 }
 
@@ -34,22 +35,20 @@ int	init_mutex(t_args *args)
 	i = -1;
 	while (++i < args->philo_n)
 		pthread_mutex_init(&args->forks[i], 0);
-	pthread_mutex_init(&(args->last_meal_mutex), NULL);
 	i = -1;
 	while (++i < args->philo_n)
 	{
-		//all.philo[i] = (t_philo *)malloc(sizeof(t_philo));
 		args->philos[i].args = args;
 		args->philos[i].id = i + 1;
 		args->philos[i].last_meal = get_curr_time();
 		args->philos[i].meals = args->times_eat;
 		pthread_create(&args->philo[i], NULL, philoact, &args->philos[i]);
-		usleep(150);
+		usleep(100);
 	}
 	i = -1;
 	while (++i < args->philo_n)
 		pthread_create(&args->check_death[i], NULL, deathchecker,
-			(void *)  &args->philos[i]);
+			&args->philos[i]);
 	join_threads(args);
 	return (0);
 }
@@ -60,6 +59,7 @@ int	init_philo(int ac, char **av)
 
 	pthread_mutex_init(&args.print, NULL);
 	pthread_mutex_init(&args.is_run_mutex, NULL);
+	pthread_mutex_init(&args.last_meal_mutex, NULL);
 	args.is_run = 1;	
 	args.philo_n = ft_atoi(av[1]);
 	args.die_t = ft_atoi(av[2]);
