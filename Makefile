@@ -6,7 +6,7 @@
 #    By: dmarceli <dmarceli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 16:16:03 by dmarceli          #+#    #+#              #
-#    Updated: 2022/08/30 16:16:08 by dmarceli         ###   ########.fr        #
+#    Updated: 2022/10/10 20:04:14 by dmarceli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RESET		=	\e[0m
 NAME	:= philo
 
 CC		:=	gcc
-CFLAGS	:= -Wall -Wextra -Werror -pthread #-fsanitize=thread   
+CFLAGS	:= -g -Wall -Wextra -Werror -pthread #-fsanitize=thread   
 
 PATH_SRC		:=	./src
 PATH_INCLUDES	:=	./incs

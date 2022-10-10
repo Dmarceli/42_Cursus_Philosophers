@@ -6,7 +6,7 @@
 /*   By: dmarceli <dmarceli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:15:25 by dmarceli          #+#    #+#             */
-/*   Updated: 2022/08/30 16:49:01 by dmarceli         ###   ########.fr       */
+/*   Updated: 2022/10/10 21:53:00 by dmarceli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,21 @@
 # include <sys/time.h>
 # include <stdlib.h>
 
-typedef struct t_arguments
+typedef struct t_arguments	t_args;
+typedef struct s_philo	t_philo;
+
+struct s_philo
+{
+	int		id;
+	int		meals;
+	long	last_meal;
+	long	last_sleep;
+	int		fork;
+	int		fork2;
+	t_args	*args;
+};
+
+struct t_arguments
 {
 	int					philo_n;
 	int					die_t;
@@ -32,28 +46,20 @@ typedef struct t_arguments
 	int					isdead;
 	pthread_mutex_t		isdead_mutex;
 	pthread_mutex_t		last_meal_mutex;
+	pthread_mutex_t		is_run_mutex;
+	int					is_run;
 	long long			start_time;
-	pthread_mutex_t		*print;
+	pthread_mutex_t		print;
 	pthread_t			philo[999];
-	pthread_t			check_death;
+	pthread_t			check_death[999];
 	pthread_mutex_t		forks[999];
+	t_philo				philos[999];
 
-}		t_args;
-
-typedef struct s_philo
-{
-	int		id;
-	int		meals;
-	long	last_meal;
-	long	last_sleep;
-	int		fork;
-	int		fork2;
-	t_args	*args;
-}				t_philo;
+};			
 
 typedef struct s_all
 {
-	t_philo	*philo[999];
+	t_philo	philo[999];
 }	t_all;
 
 int				main(int argc, char **argv);
@@ -74,5 +80,6 @@ long long		get_curr_time(void);
 int				isanyonedead(t_philo *philo);
 void			*deathchecker(void *data);
 void			destroy_mutex(t_philo *philo);
+int				is_run(t_args *args);
 
 #endif

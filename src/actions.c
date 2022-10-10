@@ -6,7 +6,7 @@
 /*   By: dmarceli <dmarceli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:15:30 by dmarceli          #+#    #+#             */
-/*   Updated: 2022/08/30 16:29:30 by dmarceli         ###   ########.fr       */
+/*   Updated: 2022/10/10 22:01:47 by dmarceli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	pickup_fork(t_philo *philo)
 	if (!philo->args->isdead)
 	{
 		forkpicker(philo);
-		pthread_mutex_lock(philo->args->print);
+		pthread_mutex_lock(&philo->args->print);
 		print_states(0, get_curr_time() - philo->args->start_time, philo);
-		if (!philo->args->isdead)
-			pthread_mutex_unlock(philo->args->print);
+		//if (!philo->args->isdead)
+		pthread_mutex_unlock(&philo->args->print);
 	}
 }
 
@@ -43,10 +43,9 @@ void	eat(t_philo *philo)
 		philo->last_meal = get_curr_time();
 		philo->meals--;
 		pthread_mutex_unlock(&(philo->args->last_meal_mutex));
-		pthread_mutex_lock(philo->args->print);
+		pthread_mutex_lock(&philo->args->print);
 		print_states(1, get_curr_time() - philo->args->start_time, philo);
-		if (!philo->args->isdead)
-			pthread_mutex_unlock(philo->args->print);
+		pthread_mutex_unlock(&philo->args->print);
 		usleep(philo->args->eat_t * 1000);
 		pthread_mutex_unlock(&philo->args->forks[philo->fork]);
 		philo->fork = 0;
@@ -60,10 +59,9 @@ void	philo_sleep(t_philo *p)
 	if (p->meals != 0)
 	{
 		p->last_sleep = get_curr_time();
-		pthread_mutex_lock(p->args->print);
+		pthread_mutex_lock(&p->args->print);
 		print_states(2, (get_curr_time() - p->args->start_time), p);
-		if (!p->args->isdead)
-			pthread_mutex_unlock(p->args->print);
+		pthread_mutex_unlock(&p->args->print);
 		while (p->args->sleep_t > (get_curr_time() - p->last_sleep))
 		{
 			if (p->args->isdead)
@@ -78,15 +76,15 @@ void	*philoact(void *data)
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
-	while (philo->meals != 0)
+	while (philo->meals != 0 && is_run(philo->args))
 	{
 		pickup_fork(philo);
 		eat(philo);
 		philo_sleep(philo);
-		pthread_mutex_lock(philo->args->print);
+		pthread_mutex_lock(&philo->args->print);
 		print_states(3, get_curr_time() - philo->args->start_time, philo);
 		if (!philo->args->isdead)
-			pthread_mutex_unlock(philo->args->print);
+			pthread_mutex_unlock(&philo->args->print);
 	}
 	return (0);
 }

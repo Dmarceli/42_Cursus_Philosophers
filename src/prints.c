@@ -6,26 +6,30 @@
 /*   By: dmarceli <dmarceli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:15:52 by dmarceli          #+#    #+#             */
-/*   Updated: 2022/08/30 16:45:13 by dmarceli         ###   ########.fr       */
+/*   Updated: 2022/10/10 22:03:04 by dmarceli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-void	*deathchecker(void *data)
+void *deathchecker(void *data)
 {
-	t_philo	*philo;
+	t_philo *philo;
 
 	philo = (t_philo *)data;
-	while (1)
+	while (is_run(philo->args))
 	{
 		if (isanyonedead(philo))
-			exit(0);
+		{
+			destroy_mutex(philo);
+			break;
+		}
+		// exit(0);
 	}
-	exit(0);
+	return (data);
 }
 
-int	isanyonedead(t_philo *philo)
+int isanyonedead(t_philo *philo)
 {
 	if (philo->args->isdead == 0)
 	{
@@ -34,10 +38,10 @@ int	isanyonedead(t_philo *philo)
 		{
 			if (philo->meals != 0)
 				print_states(4,
-					get_curr_time() - philo->args->start_time, philo);
-			pthread_mutex_lock(philo->args->print);
-			destroy_mutex(philo);
-			exit(0);
+							 get_curr_time() - philo->args->start_time, philo);
+			pthread_mutex_unlock(&(philo->args->last_meal_mutex));
+			// destroy_mutex(philo);
+			// exit(0);
 			return (1);
 		}
 		pthread_mutex_unlock(&(philo->args->last_meal_mutex));
@@ -45,6 +49,7 @@ int	isanyonedead(t_philo *philo)
 	return (0);
 }
 
+/*
 pthread_mutex_t	*init_print_mutex(void)
 {
 	pthread_mutex_t	*printer_mutex;
@@ -52,17 +57,18 @@ pthread_mutex_t	*init_print_mutex(void)
 	printer_mutex = malloc(sizeof(pthread_mutex_t));
 	pthread_mutex_init(printer_mutex, NULL);
 	return (printer_mutex);
-}
+}*/
 
-int	error_message(void)
+int error_message(void)
 {
 	printf("\x1B[31mERROR!\n\x1B[0m");
 	exit(0);
 	return (0);
 }
 
-void	print_states(int act, long time, t_philo *philo)
+void print_states(int act, long time, t_philo *philo)
 {
+	if (is_run(philo->args))
 	{
 		if (act == 0)
 		{
