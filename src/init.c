@@ -36,6 +36,8 @@ int	init_mutex(t_args *args)
 	while (++i < args->philo_n)
 		pthread_mutex_init(&args->forks[i], 0);
 	i = -1;
+	pthread_mutex_init(&args->print, NULL);
+	pthread_mutex_init(&args->last_meal_mutex, NULL);
 	while (++i < args->philo_n)
 	{
 		args->philos[i].args = args;
@@ -45,8 +47,6 @@ int	init_mutex(t_args *args)
 		pthread_create(&args->philo[i], NULL, philoact, &args->philos[i]);
 		usleep(100);
 	}
-	pthread_mutex_init(&args->print, NULL);
-	pthread_mutex_init(&args->last_meal_mutex, NULL);
 	i = -1;
 	while (++i < args->philo_n)
 		pthread_create(&args->check_death[i], NULL, deathchecker,
@@ -74,7 +74,8 @@ int	init_philo(int ac, char **av)
 	if (ac == 6)
 		args.times_eat = ft_atoi(av[5]);
 	if (args.philo_n == 1)
-	{	
+	{
+		printf("0ms\tPhilo\t1\thas taken a fork\n");
 		usleep(args.die_t * 1000);
 		printf("%d\tPhilo\t1\tdied\n", args.die_t);
 		exit(0);
