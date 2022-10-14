@@ -6,29 +6,30 @@
 /*   By: danielsequeira <danielsequeira@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:15:52 by dmarceli          #+#    #+#             */
-/*   Updated: 2022/10/10 22:49:28 by danielseque      ###   ########.fr       */
+/*   Updated: 2022/10/14 03:18:14 by danielseque      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-void *deathchecker(void *data)
+void	*deathchecker(void *data)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = (t_philo *)data;
 	while (is_run(philo->args))
 	{
 		if (isanyonedead(philo))
 		{
+			pthread_mutex_unlock(&philo->args->print);
 			destroy_mutex(philo);
-			break;
+			break ;
 		}
 	}
 	return (data);
 }
 
-int isanyonedead(t_philo *philo)
+int	isanyonedead(t_philo *philo)
 {
 	if (philo->args->isdead == 0)
 	{
@@ -38,7 +39,8 @@ int isanyonedead(t_philo *philo)
 			pthread_mutex_unlock(&(philo->args->last_meal_mutex));
 			if (philo->meals != 0)
 				print_states(4,
-							 get_curr_time() - philo->args->start_time, philo);
+					get_curr_time() - philo->args->start_time, philo);
+			pthread_mutex_lock(&philo->args->print);
 			return (1);
 		}
 		pthread_mutex_unlock(&(philo->args->last_meal_mutex));
@@ -46,24 +48,14 @@ int isanyonedead(t_philo *philo)
 	return (0);
 }
 
-/*
-pthread_mutex_t	*init_print_mutex(void)
-{
-	pthread_mutex_t	*printer_mutex;
-
-	printer_mutex = malloc(sizeof(pthread_mutex_t));
-	pthread_mutex_init(printer_mutex, NULL);
-	return (printer_mutex);
-}*/
-
-int error_message(void)
+int	error_message(void)
 {
 	printf("\x1B[31mERROR!\n\x1B[0m");
 	exit(0);
 	return (0);
 }
 
-void print_states(int act, long time, t_philo *philo)
+void	print_states(int act, long time, t_philo *philo)
 {
 	if (is_run(philo->args))
 	{

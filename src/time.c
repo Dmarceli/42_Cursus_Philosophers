@@ -6,7 +6,7 @@
 /*   By: danielsequeira <danielsequeira@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:15:55 by dmarceli          #+#    #+#             */
-/*   Updated: 2022/10/10 22:38:51 by danielseque      ###   ########.fr       */
+/*   Updated: 2022/10/14 03:09:03 by danielseque      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ void	destroy_mutex(t_philo *philo)
 	pthread_mutex_unlock(&philo->args->is_run_mutex);
 }
 
-int is_run(t_args *args)
+int	is_run(t_args *args)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	pthread_mutex_lock(&args->is_run_mutex);
 	i = args->is_run;
 	pthread_mutex_unlock(&args->is_run_mutex);
-	return i;
+	return (i);
 }
 
 long long	get_curr_time(void)

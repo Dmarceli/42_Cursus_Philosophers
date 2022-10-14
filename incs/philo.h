@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmarceli <dmarceli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: danielsequeira <danielsequeira@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:15:25 by dmarceli          #+#    #+#             */
-/*   Updated: 2022/10/10 21:53:00 by dmarceli         ###   ########.fr       */
+/*   Updated: 2022/10/14 03:22:45 by danielseque      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <sys/time.h>
 # include <stdlib.h>
 
-typedef struct t_arguments	t_args;
-typedef struct s_philo	t_philo;
+typedef struct s_arguments	t_args;
+typedef struct s_philo		t_philo;
 
 struct s_philo
 {
@@ -36,7 +36,7 @@ struct s_philo
 	t_args	*args;
 };
 
-struct t_arguments
+struct s_arguments
 {
 	int					philo_n;
 	int					die_t;
@@ -54,13 +54,7 @@ struct t_arguments
 	pthread_t			check_death[999];
 	pthread_mutex_t		forks[999];
 	t_philo				philos[999];
-
 };			
-
-typedef struct s_all
-{
-	t_philo	philo[999];
-}	t_all;
 
 int				main(int argc, char **argv);
 int				ft_atoi(const char *str);

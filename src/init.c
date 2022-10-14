@@ -6,7 +6,7 @@
 /*   By: danielsequeira <danielsequeira@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:15:42 by dmarceli          #+#    #+#             */
-/*   Updated: 2022/10/10 22:51:59 by danielseque      ###   ########.fr       */
+/*   Updated: 2022/10/14 03:12:18 by danielseque      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	join_threads(t_args *args)
 {
 	int		i;
 
-    i = -1;
+	i = -1;
 	while (++i < args->philo_n)
 		pthread_join((args->check_death[i]), NULL);
 	i = -1;
@@ -45,6 +45,8 @@ int	init_mutex(t_args *args)
 		pthread_create(&args->philo[i], NULL, philoact, &args->philos[i]);
 		usleep(100);
 	}
+	pthread_mutex_init(&args->print, NULL);
+	pthread_mutex_init(&args->last_meal_mutex, NULL);
 	i = -1;
 	while (++i < args->philo_n)
 		pthread_create(&args->check_death[i], NULL, deathchecker,
@@ -57,10 +59,8 @@ int	init_philo(int ac, char **av)
 {
 	static t_args	args;
 
-	pthread_mutex_init(&args.print, NULL);
 	pthread_mutex_init(&args.is_run_mutex, NULL);
-	pthread_mutex_init(&args.last_meal_mutex, NULL);
-	args.is_run = 1;	
+	args.is_run = 1;
 	args.philo_n = ft_atoi(av[1]);
 	args.die_t = ft_atoi(av[2]);
 	args.eat_t = ft_atoi(av[3]);

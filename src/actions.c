@@ -6,7 +6,7 @@
 /*   By: danielsequeira <danielsequeira@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:15:30 by dmarceli          #+#    #+#             */
-/*   Updated: 2022/10/10 22:56:26 by danielseque      ###   ########.fr       */
+/*   Updated: 2022/10/14 03:23:30 by danielseque      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,15 @@ void	eat(t_philo *philo)
 		pthread_mutex_lock(&philo->args->print);
 		print_states(1, get_curr_time() - philo->args->start_time, philo);
 		pthread_mutex_unlock(&philo->args->print);
-		//usleep(philo->args->eat_t * 1000);
 		while (philo->args->eat_t > (get_curr_time() - philo->last_meal))
 		{
 			if (philo->args->isdead)
 				break ;
 		}
 		pthread_mutex_unlock(&philo->args->forks[philo->fork]);
-		philo->fork = 0;
+		philo->fork = FREE;
 		pthread_mutex_unlock(&philo->args->forks[philo->fork2]);
-		philo->fork2 = 0;
+		philo->fork2 = FREE;
 	}
 }
 
@@ -66,7 +65,6 @@ void	philo_sleep(t_philo *p)
 		pthread_mutex_lock(&p->args->print);
 		print_states(2, (get_curr_time() - p->args->start_time), p);
 		pthread_mutex_unlock(&p->args->print);
-		//usleep(p->args->sleep_t * 1000);
 		while (p->args->sleep_t > (get_curr_time() - p->last_sleep))
 		{
 			if (p->args->isdead)
