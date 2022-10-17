@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danielsequeira <danielsequeira@student.    +#+  +:+       +#+        */
+/*   By: dmarceli <dmarceli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:15:25 by dmarceli          #+#    #+#             */
-/*   Updated: 2022/10/14 03:22:45 by danielseque      ###   ########.fr       */
+/*   Updated: 2022/10/17 18:35:48 by dmarceli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ struct s_arguments
 	int					is_run;
 	long long			start_time;
 	pthread_mutex_t		print;
-	pthread_t			philo[999];
-	pthread_t			check_death[999];
-	pthread_mutex_t		forks[999];
-	t_philo				philos[999];
+	pthread_t			philo[200];
+	pthread_t			check_death[200];
+	pthread_mutex_t		forks[200];
+	t_philo				philos[200];
 };			
 
 int				main(int argc, char **argv);

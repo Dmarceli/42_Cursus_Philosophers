@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danielsequeira <danielsequeira@student.    +#+  +:+       +#+        */
+/*   By: dmarceli <dmarceli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:15:30 by dmarceli          #+#    #+#             */
-/*   Updated: 2022/10/14 03:23:30 by danielseque      ###   ########.fr       */
+/*   Updated: 2022/10/17 19:44:38 by dmarceli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	forkpicker(t_philo *p)
 	if (!p->args->isdead)
 	{
 		p->fork = p->id - 1;
-		pthread_mutex_lock(&p->args->forks[p->fork]);
 		p->fork2 = (p->id) % p->args->philo_n;
+		pthread_mutex_lock(&p->args->forks[p->fork]);
 		pthread_mutex_lock(&p->args->forks[p->fork2]);
 	}
 }
@@ -50,9 +50,9 @@ void	eat(t_philo *philo)
 			if (philo->args->isdead)
 				break ;
 		}
+		pthread_mutex_unlock(&philo->args->forks[philo->fork2]);
 		pthread_mutex_unlock(&philo->args->forks[philo->fork]);
 		philo->fork = FREE;
-		pthread_mutex_unlock(&philo->args->forks[philo->fork2]);
 		philo->fork2 = FREE;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danielsequeira <danielsequeira@student.    +#+  +:+       +#+        */
+/*   By: dmarceli <dmarceli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:15:42 by dmarceli          #+#    #+#             */
-/*   Updated: 2022/10/14 03:12:18 by danielseque      ###   ########.fr       */
+/*   Updated: 2022/10/17 18:35:59 by dmarceli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	init_philo(int ac, char **av)
 	args.start_time = get_curr_time();
 	args.isdead = 0;
 	if (args.philo_n < 1 || args.die_t < 0 || args.eat_t < 0
-		|| args.sleep_t < 0 || args.philo_n > 250)
+		|| args.sleep_t < 0 || args.philo_n > 200)
 		return (0);
 	if (ac == 6)
 		args.times_eat = ft_atoi(av[5]);
